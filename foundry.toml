@@ -6,11 +6,17 @@ remappings = ['@chainlink/contracts/=lib/chainlink-brownie-contracts/contracts/'
 
 [etherscan]
 mainnet = { key = "${ETHERSCAN_API_KEY}" }
-sepolia = {key = "${ETHERSCAN_API_KEY}"}
+sepolia = { key = "${ETHERSCAN_API_KEY}" }
 
 [rpc_endpoints]
 sepolia = "${SEPOLIA_RPC_URL}"
 
+[fs_permissions]
+# Ensure these are separated and not under rpc_endpoints
+fs_permissions = [
+    { access = "read", path = "./broadcast" },
+    { access = "read", path = "./reports" }
+] 
 
-
-# See more config options https://github.com/foundry-rs/foundry/tree/master/config
+[fuzz]
+runs =256
